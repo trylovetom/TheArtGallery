@@ -59,3 +59,6 @@ This report would be benerated for a period starting with whatever date is selec
 
 There are several other reports that could be helpful, and several routine transactions that are needed. You sould show these, and give layouts of the ones listed above, in Step 1.1. In step 1.2 you sould write assumptions that summarize the operations of the gallery as described here or as described by someone you interviewed.
 
+## ER Diagram
+![](https://i.imgur.com/xIr2rYv.png)
+
