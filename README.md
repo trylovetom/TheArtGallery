@@ -62,3 +62,6 @@ There are several other reports that could be helpful, and several routine trans
 ## ER Diagram
 ![](https://i.imgur.com/xIr2rYv.png)
 
+## Relational Schema
+![](https://i.imgur.com/OkFZPHF.png)
+
