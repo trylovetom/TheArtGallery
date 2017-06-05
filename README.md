@@ -65,3 +65,61 @@ There are several other reports that could be helpful, and several routine trans
 ## Relational Schema
 ![](https://i.imgur.com/OkFZPHF.png)
 
+## SQL
+```
+CREATE TABLE ARTIST (
+  Address VARCHAR(128) NOT NULL,
+  UsualStyle VARCHAR(20),
+  Phone VARCHAR(20) NOT NULL,
+  SocialSecurityNumber VARCHAR(20) NOT NULL,
+  UsualType VARCHAR(20),
+  SalesLastYear VARCHAR(32),
+  SalesYearToDate VARCHAR(32),
+  ArtistId VARCHAR(32) NOT NULL,
+  FirstName VARCHAR(20) NOT NULL,
+  LastName VARCHAR(20) NOT NULL,
+  UsualMedium VARCHAR(20),
+  PRIMARY KEY (ArtistId),
+  UNIQUE (Phone),
+  UNIQUE (SocialSecurityNumber)
+);
+
+CREATE TABLE WORK (
+  Title VARCHAR(20) NOT NULL,
+  Style VARCHAR(20) NOT NULL,
+  Size VARCHAR(20) NOT NULL,
+  Type VARCHAR(20) NOT NULL,
+  AskingPrice VARCHAR(32) NOT NULL,
+  Medium VARCHAR(20) NOT NULL,
+  DateOfShow DATE,
+  WorkId VARCHAR(32) NOT NULL,
+  ArtistId VARCHAR(32) NOT NULL,
+  PRIMARY KEY (WorkId),
+  FOREIGN KEY (ArtistId) REFERENCES ARTIST(ArtistId)
+);
+
+CREATE TABLE CUSTOMER (
+  FistName VARCHAR(20) NOT NULL,
+  Address VARCHAR(128),
+  Phone VARCHAR(20) NOT NULL,
+  AmountBoughtLastYear VARCHAR(32),
+  AmountBoughtYearToDate VARCHAR(32),
+  CustomerId VARCHAR(32) NOT NULL,
+  LastName VARCHAR(20) NOT NULL,
+  PRIMARY KEY (CustomerId),
+  UNIQUE (Phone)
+);
+
+CREATE TABLE SALE (
+  DateSold DATE NOT NULL,
+  Salesperson VARCHAR(20) NOT NULL,
+  SellingPrice DECIMAL NOT NULL,
+  SaleId VARCHAR(32) NOT NULL,
+  CustomerId VARCHAR(32) NOT NULL,
+  WorkId VARCHAR(32) NOT NULL,
+  PRIMARY KEY (SaleId),
+  FOREIGN KEY (CustomerId) REFERENCES CUSTOMER(CustomerId),
+  FOREIGN KEY (WorkId) REFERENCES WORK(WorkId)
+);
+```
+
