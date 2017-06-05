@@ -1,0 +1,4 @@
+# .elasticbeanstalk/config.global.yml
+global:
+  application_name: TheArtGallery
+  default_region: us-west-2 # EB 所在的 region，預設是 us-west-2
