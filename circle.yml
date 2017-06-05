@@ -1,21 +1,17 @@
 # circle.yml
 machine:
-  # 安裝 eb 需要 python
-  python:
-    version: 2.7
+  pre:
+    - sudo apt-get update
+    - sudo apt-get install python-dev
+    - sudo python -m pip install -U pip
+    - sudo pip install awsebcli
   node:
     version: 7.10.0
-
-dependencies:
-  pre:
-    # 安裝 eb
-    - sudo pip install awsebcli
 
 test:
   override:
     - npm test
 
-# 新增一筆部署腳本
 deployment:
   production:
     branch: master
