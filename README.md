@@ -65,7 +65,7 @@ There are several other reports that could be helpful, and several routine trans
 ## Relational Schema
 ![](https://i.imgur.com/OkFZPHF.png)
 
-## SQL
+## SQL Design
 ```
 CREATE TABLE ARTIST (
   Address VARCHAR(128) NOT NULL,
@@ -99,12 +99,12 @@ CREATE TABLE WORK (
 );
 
 CREATE TABLE CUSTOMER (
+  CustomerId VARCHAR(32) NOT NULL,
   FistName VARCHAR(20) NOT NULL,
   Address VARCHAR(128),
   Phone VARCHAR(20) NOT NULL,
   AmountBoughtLastYear VARCHAR(32),
   AmountBoughtYearToDate VARCHAR(32),
-  CustomerId VARCHAR(32) NOT NULL,
   LastName VARCHAR(20) NOT NULL,
   PRIMARY KEY (CustomerId),
   UNIQUE (Phone)
@@ -113,7 +113,7 @@ CREATE TABLE CUSTOMER (
 CREATE TABLE SALE (
   DateSold DATE NOT NULL,
   Salesperson VARCHAR(20) NOT NULL,
-  SellingPrice DECIMAL NOT NULL,
+  SellingPrice VARCHAR(32) NOT NULL,
   SaleId VARCHAR(32) NOT NULL,
   CustomerId VARCHAR(32) NOT NULL,
   WorkId VARCHAR(32) NOT NULL,
@@ -123,3 +123,75 @@ CREATE TABLE SALE (
 );
 ```
 
+## API End Point
+
+1. Artist
+    <table>
+            <tr><td>Parameter</td><td>Type</td></tr>
+            <tr><td>ArtistId</td><td>String</td></tr>
+            <tr><td>FirstName</td><td>String</td></tr>
+            <tr><td>LastName</td><td>String</td></tr>
+            <tr><td>Phone</td><td>String</td></tr>
+            <tr><td>Address</td><td>String</td></tr>
+            <tr><td>SocialSecurityNumber</td><td>String</td></tr>
+            <tr><td>UsualStyle</td><td>String</td></tr>
+            <tr><td>UsualType</td><td>String</td></tr>
+            <tr><td>UsualMedium</td><td>String</td></tr>
+            <tr><td>SalesLastYear</td><td>String</td></tr>
+            <tr><td>SalesYearToDate</td><td>String</td></tr>
+        </table>
+        
+    - `POST /artist` create the new artist
+    - `GET /artist/:id` get the artist by id, without id you can get the all list
+    - `UPDATE /artist/:id` update the artist by id
+    - `DELETE /artist/:id` delete the artist by id
+        
+2. Work
+    <table>
+        <tr><td>ArtistId</td><td>String</td></tr>
+        <tr><td>Parameter</td><td>Type</td></tr>
+        <tr><td>Title</td><td>String</td></tr>
+        <tr><td>Style</td><td>String</td></tr>
+        <tr><td>Size</td><td>String</td></tr>
+        <tr><td>Type</td><td>String</td></tr>
+        <tr><td>AskingPrice</td><td>String</td></tr>
+        <tr><td>Medium</td><td>String</td></tr>
+        <tr><td>DateOfShow</td><td>DATE</td></tr>
+    </table>
+    
+    - `POST /work` create the new work
+    - `GET /work:id` get the work by id, without id you can get the all list
+    - `UPDATE /work:id` update the work by id
+    - `DELETE /work:id` delete the work by id
+3. Customer
+    <table>
+        <tr><td>Parameter</td><td>Type</td></tr>
+        <tr><td>CustomerId</td><td>String</td></tr>
+        <tr><td>FirstName</td><td>String</td></tr>
+        <tr><td>LastName</td><td>String</td></tr>
+        <tr><td>Phone</td><td>String</td></tr>
+        <tr><td>Address</td><td>String</td></tr>
+        <tr><td>AmountBoughtLastYear</td><td>String</td></tr>
+        <tr><td>AmountBoughtYearToDate</td><td>String</td></tr>
+    </table>
+    
+    - `POST /customer` create the new customer
+    - `GET /customer/:id` get the customer by id, without id you can get the all list
+    - `UPDATE /customer/:id` update the customer by id
+    - `DELETE /customer/:id` delete the customer by id
+4. Sale
+    <table>
+        <tr><td>Parameter</td><td>Type</td></tr>
+        <tr><td>DateSold</td><td>Date</td></tr>
+        <tr><td>Salesperson</td><td>String</td></tr>
+        <tr><td>SellingPrice</td><td>String</td></tr>
+        <tr><td>Address</td><td>String</td></tr>
+        <tr><td>SaleId</td><td>String</td></tr>
+        <tr><td>CustomerId</td><td>String</td></tr>
+        <tr><td>WorkId</td><td>String</td></tr>
+    </table>
+    
+    - `POST /sale` create the new sale
+    - `GET /sale/:id` get the sale by id, without id you can get the all list
+    - `UPDATE sale/:id` update the sale by id
+    - `DELETE sale/:id` delete the sale by id
