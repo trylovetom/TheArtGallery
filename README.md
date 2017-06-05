@@ -13,11 +13,9 @@ The gallery promotes the works by holding showings featuring various pieces. The
 At present, all data relating to artists, unsold works, sales, and customers are kept in separate files. The files have th following data:
 
 * Unsold\_Work: Title, Artist, Type, Medium, Style, Size, Asking\_price, Date\_Of\_Show
-* Artist: Name, Address, Phone, SocSecNo, UsaualType, UsualMedium, Usual-Style, Sales\_Last\_Year, Sales\_Year\_To\_Date
+* Artist: Name, Address, Phone, SocSecNo, UsaualType, UsualMedium, UsualStyle, Sales\_Last\_Year, Sales\_Year\_To\_Date
 * Sale: Title, Artist, Cust\_Name, Cust\_Add, Date\_Sold, Salesperson, Selling\_Price
-* Customer: Cust\_Name, Cust\\_Add, Cust\_Phone, Amt\_Bought\_Last)Year, Amt\_bought\_Year\_To\_Date
-
-The Unsold\_Wo
+* Customer: Cust\_Name, Cust\_Add, Cust\_Phone, Amt\_Bought\_Last\_Year, Amt\_bought\_Year\_To\_Date
 
 The Unsold\_Work file keeps track of the works currently on exhibit, and is used by salespeople. Each work must have a title, which is unique to the artist but may not be totally unique to the gallery. For example, may artists may have works such as "Composition Number 5," but no artist has two works with that title. Each work is by a single artist. The type refers to the type of work, which may be painting, sculpture, collage, and so on. The medium refers to the materials used in the work as oil, watercolor, marble, mixed, and so on. A piece using more than one medium is categorized as mixed. The style means the style of the work, which may be contemporary impressionist, folk, and so on. The size is expressed in units appropriate for the work; for example, for a painting, the size would be the number of inches in height and width. The Artist file is used to keep track of artists and to report to the Internal Revenue Service the amount of sales for each each artist. Sales\_Last\_Year is a dollar figure giving the total amount of sales for that artist last year, and Sales\_Year\_To\_Date gives the total amount of sales so for sales this year. Information is kept about the usual type, mdium, and style of each artist, where these works have the same meanings as in the Unsold_Work file. The Customer file keeps track of customers who have made purchases, and includes information about the dollar amount of their purchase last year and so far this year. When a purchase is made, a receipt is made out for the customer, a payment check and stub are made out for the artist, the commission is the customer, a payment check and stub are made out for the artist, the commission is allocated between the gallery and the salesperson, and all files are updated individually.
 
@@ -60,3 +58,4 @@ Alan might also like reports on the sales of individual salespeople for the curr
 This report would be benerated for a period starting with whatever date is selected (e.g., January first of the current year) and ending with another selected date (e.g., today's date). It provides an individual listing of each of the works sold by that person during the period, as well as his or her total sales for the period chosen.
 
 There are several other reports that could be helpful, and several routine transactions that are needed. You sould show these, and give layouts of the ones listed above, in Step 1.1. In step 1.2 you sould write assumptions that summarize the operations of the gallery as described here or as described by someone you interviewed.
+
