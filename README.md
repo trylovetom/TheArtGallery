@@ -68,55 +68,52 @@ There are several other reports that could be helpful, and several routine trans
 ## SQL Design
 ```
 CREATE TABLE ARTIST (
-  Address VARCHAR(128) NOT NULL,
+  Address VARCHAR(128),
   UsualStyle VARCHAR(20),
-  Phone VARCHAR(20) NOT NULL,
-  SocialSecurityNumber VARCHAR(20) NOT NULL,
+  Phone VARCHAR(20),
+  SocialSecurityNumber VARCHAR(20),
   UsualType VARCHAR(20),
   SalesLastYear VARCHAR(32),
   SalesYearToDate VARCHAR(32),
-  ArtistId VARCHAR(32) NOT NULL,
-  FirstName VARCHAR(20) NOT NULL,
-  LastName VARCHAR(20) NOT NULL,
+  ArtistId VARCHAR(32),
+  FirstName VARCHAR(20),
+  LastName VARCHAR(20),
   UsualMedium VARCHAR(20),
-  PRIMARY KEY (ArtistId),
-  UNIQUE (Phone),
-  UNIQUE (SocialSecurityNumber)
+  PRIMARY KEY (ArtistId)
 );
 
 CREATE TABLE WORK (
-  Title VARCHAR(20) NOT NULL,
-  Style VARCHAR(20) NOT NULL,
-  Size VARCHAR(20) NOT NULL,
-  Type VARCHAR(20) NOT NULL,
-  AskingPrice VARCHAR(32) NOT NULL,
-  Medium VARCHAR(20) NOT NULL,
+  Title VARCHAR(20),
+  Style VARCHAR(20),
+  Size VARCHAR(20),
+  Type VARCHAR(20),
+  AskingPrice VARCHAR(32),
+  Medium VARCHAR(20),
   DateOfShow DATE,
-  WorkId VARCHAR(32) NOT NULL,
-  ArtistId VARCHAR(32) NOT NULL,
+  WorkId VARCHAR(32),
+  ArtistId VARCHAR(32),
   PRIMARY KEY (WorkId),
   FOREIGN KEY (ArtistId) REFERENCES ARTIST(ArtistId)
 );
 
 CREATE TABLE CUSTOMER (
-  CustomerId VARCHAR(32) NOT NULL,
-  FistName VARCHAR(20) NOT NULL,
+  CustomerId VARCHAR(32),
+  FirstName VARCHAR(20),
   Address VARCHAR(128),
-  Phone VARCHAR(20) NOT NULL,
+  Phone VARCHAR(20),
   AmountBoughtLastYear VARCHAR(32),
   AmountBoughtYearToDate VARCHAR(32),
-  LastName VARCHAR(20) NOT NULL,
-  PRIMARY KEY (CustomerId),
-  UNIQUE (Phone)
+  LastName VARCHAR(20),
+  PRIMARY KEY (CustomerId)
 );
 
 CREATE TABLE SALE (
-  DateSold DATE NOT NULL,
-  Salesperson VARCHAR(20) NOT NULL,
-  SellingPrice VARCHAR(32) NOT NULL,
-  SaleId VARCHAR(32) NOT NULL,
-  CustomerId VARCHAR(32) NOT NULL,
-  WorkId VARCHAR(32) NOT NULL,
+  DateSold DATE,
+  Salesperson VARCHAR(20),
+  SellingPrice VARCHAR(32),
+  SaleId VARCHAR(32),
+  CustomerId VARCHAR(32),
+  WorkId VARCHAR(32),
   PRIMARY KEY (SaleId),
   FOREIGN KEY (CustomerId) REFERENCES CUSTOMER(CustomerId),
   FOREIGN KEY (WorkId) REFERENCES WORK(WorkId)
