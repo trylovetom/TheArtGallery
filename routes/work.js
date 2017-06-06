@@ -6,6 +6,10 @@ function uid(len) {
   return Math.random().toString(35).substr(2, len);
 }
 
+router.get('/create', function(req, res, next) {
+  return res.render('workCreate');
+})
+
 router.post('/', function(req, res, next) {
   var sql = {
     WorkId: uid(32),
@@ -30,39 +34,32 @@ router.post('/', function(req, res, next) {
           throw err
         }
 
-        return res.send({
-          WorkId: sql.WorkId
-        });
+        return res.redirect('/work');
       });
     } else {
-      return res.send({
-        msg: "ArtistIdNotFound"
+      return res.render('error', {
+        message: "ArtistIdNotFound"
       });
     }
   });
 });
 
 router.get('/', function(req, res, next) {
-  req.db.query('SELECT * FROM WORK', function(err, rows) {
+  req.db.query('SELECT WORK.*, ARTIST.FirstName, ARTIST.LastName FROM WORK, ARTIST WHERE WORK.ArtistId = ARTIST.ArtistId', function(err, rows) {
     if (err) {
       throw err
     }
 
-    return res.send({
-      data: rows
-    });
+    return res.render('work', { data: rows });
   })
 });
 
 router.get('/:id', function(req, res, next) {
-  req.db.query('SELECT * FROM WORK WHERE WorkId = ?', req.params.id, function(err, rows) {
+  req.db.query('SELECT WORK.*, ARTIST.FirstName, ARTIST.LastName FROM WORK, ARTIST WHERE WorkId = ? AND WORK.ArtistId = ARTIST.ArtistId', req.params.id, function(err, rows) {
     if (err) {
       throw err
     }
-
-    return res.send({
-      data: rows
-    });
+    return res.render('workDetail', { data: rows[0] });
   })
 });
 
@@ -96,7 +93,7 @@ router.put('/:id', function(req, res, next) {
     } else {
       return res.send({
         msg: "ArtistIdNotFound"
-      });
+      }).status(400);
     }
   });
 });

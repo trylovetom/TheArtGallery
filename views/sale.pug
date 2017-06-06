@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Sale
+  h2
+    a(href='/sale/create') Create
+  table
+    tr
+      td SaleId
+      td DateSold
+      td Salesperson
+      td SellingPrice
+      td CustomerId
+      td WorkId
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td
+          a(href='/artist/' + data[i].ArtistId)= data[i].SaleId
+        td= data[i].DateSold
+        td= data[i].Salesperson
+        td= data[i].SellingPrice
+        td= data[i].CustomerId
+        td= data[i].WorkId

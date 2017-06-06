@@ -16,12 +16,10 @@ router.post('/', function(req, res, next) {
     WorkId: req.body.WorkId
   };
 
-  console.log('test')
   req.db.query('SELECT * FROM CUSTOMER WHERE CustomerId = ?', req.body.CustomerId, function(err, rows) {
     if (err) {
       throw err
     }
-    console.log('success')
     if (rows.length > 0) {
       req.db.query('SELECT * FROM WORK WHERE WorkId = ?', req.body.WorkId, function(err, rows) {
         if (rows.length > 0) {
@@ -37,13 +35,13 @@ router.post('/', function(req, res, next) {
         } else {
           return res.send({
             msg: "WorkIdNotFound"
-          })
+          }).status(400)
         }
       });
     } else {
       return res.send({
         msg: "CustomerIdNotFound"
-      })
+      }).status(400)
     }
   });
 });
@@ -54,9 +52,7 @@ router.get('/', function(req, res, next) {
       throw err
     }
 
-    return res.send({
-      data: rows
-    });
+    return res.render('sale', { data: rows })
   })
 });
 

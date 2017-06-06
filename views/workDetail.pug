@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  h1= 'Work Detail - ' + data.WorkId
+  input(type="hidden", value=data.WorkId, id="WorkId")
+  div
+    lable Title: 
+    input(type="text", value=data.Title, id="Title")
+  div
+    lable Style: 
+    input(type="text", value=data.Style, id="Style")
+  div
+    lable Size: 
+    input(type="text", value=data.Size, id="Size")
+  div
+    lable Type: 
+    input(type="text", value=data.Type, id="Type")
+  div
+    lable AskingPrice: 
+    input(type="text", value=data.AskingPrice, id="AskingPrice")
+  div
+    lable Medium: 
+    input(type="text", value=data.Medium, id="Medium")
+  div
+    lable DateOfShow: 
+    input(type="text", value=data.DateOfShow, id="DateOfShow")
+  div
+    lable ArtistId: 
+    input(type="text", value=data.ArtistId, id="ArtistId")
+  div
+    label ArtistFirstName: 
+    input(type="text", value=data.FirstName, id="FirstName", disabled="disabled")
+  div
+    lable ArtistLastName: 
+    input(type="text", value=data.LastName, id="LastName", disabled="disabled")
+    input(type='submit', id='target')
+  script.
+    $(function() {
+      $('#target').click(function() {
+        $.ajax({
+          url: "/work/" + $("#WorkId").val(),
+          type: 'put',
+          data: {
+            Title: $("#Title").val(),
+            Style: $("#Style").val(),
+            Size: $("#Size").val(),
+            Type: $("#Type").val(),
+            AskingPrice: $("AskingPrice").val(),
+            Medium: $("#Medium").val(),
+            DateOfShow: $("#DateOfShow").val(),
+            ArtistId: $("#ArtistId").val()
+          },
+          error: function(error) {
+            alert("Error: " + error);
+          },
+          success: function(result) {
+            alert("Update Success");
+          }
+        });
+      });
+    });

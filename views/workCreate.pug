@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Create Work
+  form(action="/work" method="post")
+    div
+      lable Title: 
+      input(type="text", name="Title")
+    div
+      lable Style: 
+      input(type="text", name="Style")
+    div
+      lable Size: 
+      input(type="text", name="Size")
+    div
+      lable Type: 
+      input(type="text", name="Type")
+    div
+      lable AskingPrice: 
+      input(type="text", name="AskingPrice")
+    div
+      lable Medium: 
+      input(type="text", name="Medium")
+    div
+      lable DateOfShow: 
+      input(type="text", name="DateOfShow")
+    div
+      lable ArtistId: 
+      input(type="text", name="ArtistId")
+    div
+      label ArtistFirstName: 
+      input(type="text", name="FirstName", disabled="disabled")
+    div
+      lable ArtistLastName: 
+      input(type="text", name="LastName", disabled="disabled")
+      input(type='submit', id='target')

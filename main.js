@@ -26,6 +26,7 @@ var artist = require('./routes/artist');
 var work = require('./routes/work');
 var customer = require('./routes/customer');
 var sale = require('./routes/sale');
+var payment = require('./routes/payment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,6 +46,7 @@ app.use('/artist', artist);
 app.use('/work', work);
 app.use('/customer', customer);
 app.use('/sale', sale);
+app.use('/payment', payment);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

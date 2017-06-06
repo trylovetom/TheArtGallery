@@ -6,6 +6,10 @@ function uid(len) {
   return Math.random().toString(35).substr(2, len);
 }
 
+router.get('/create', function(req, res, next) {
+  return res.render('customerCreate')
+});
+
 router.post('/', function(req, res, next) {
   var sql = {
     CustomerId: uid(32),
@@ -22,21 +26,17 @@ router.post('/', function(req, res, next) {
       throw err
     }
 
-    return res.send({
-      CustomerId: sql. CustomerId
-    });
+    return res.redirect('/customer');
   });
 });
 
 router.get('/', function(req, res, next) {
-  req.db.query('SELECT * FROM CUSTOMER', function(err, rows) {
+  req.db.query('SELECT * FROM CUSTOMER ORDER BY FirstName ASC, LastName ASC', function(err, rows) {
     if (err) {
       throw err
     }
 
-    return res.send({
-      data: rows
-    });
+    return res.render('customer', { data: rows });
   })
 });
 
@@ -46,13 +46,15 @@ router.get('/:id', function(req, res, next) {
       throw err
     }
 
-    return res.send({
-      data: rows
+    return res.render('customerDetail', {
+      data: rows[0]
     });
   })
 });
 
 router.put('/:id', function(req, res, next) {
+  console.log('test')
+  console.log(req.body)
   var sql = {
     FirstName: req.body.FirstName,
     LastName: req.body.LastName,

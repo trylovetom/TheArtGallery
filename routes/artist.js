@@ -6,6 +6,20 @@ function uid(len) {
   return Math.random().toString(35).substr(2, len);
 }
 
+// router.get('/report', function(req, res, next) {
+//   req.db.query('SELECT ARTIST.FirstName, ARTIST.LastName, WORK.*, SALE.SellingPrice, SALE.DateSold FROM ARTIST LEFT JOINT WORK LEFT JOINT SALE ON SALE.WorkId = WORK.WorkId ON WORK.ArtistId = ARTIST.ArtistId ORDER BY FirstName ASC, LastName ASC', function(err, rows) {
+//     if (err) {
+//       throw err
+//     }
+//     console.log(rows)
+//     res.render('artistReport', { data: rows});
+//   });
+// })
+
+router.get('/create', function(req, res, next) {
+  res.render('artistCreate');
+})
+
 router.post('/', function(req, res, next) {
   var sql = {
     ArtistId: uid(32),
@@ -26,9 +40,7 @@ router.post('/', function(req, res, next) {
       throw err
     }
 
-    return res.send({
-      ArtistId: sql.ArtistId
-    });
+    return res.redirect('/artist')
   });
 });
 
@@ -38,9 +50,7 @@ router.get('/', function(req, res, next) {
       throw err
     }
 
-    return res.send({
-      data: rows
-    });
+    res.render('artist', { data: rows });
   });
 });
 
@@ -50,9 +60,7 @@ router.get('/:id', function(req, res, next) {
       throw err
     }
 
-    return res.send({
-      data: rows
-    });
+    res.render('artistDetail', { data: rows[0] });
   });
 });
 

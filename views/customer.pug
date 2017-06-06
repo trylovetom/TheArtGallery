@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Customer
+  h2
+    a(href='/customer/create') Create
+  table
+    tr
+      td CustomerId
+      td FirstName
+      td LastName
+      td Phone
+      td Address
+      td AmountBoughtLastYear
+      td AmountBoughtYearToDate
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td
+          a(href='/customer/' + data[i].CustomerId)= data[i].CustomerId
+        td= data[i].FirstName
+        td= data[i].LastName
+        td= data[i].Phone
+        td= data[i].Address
+        td= data[i].AmountBoughtLastYear
+        td= data[i].AmountBoughtYearToDate

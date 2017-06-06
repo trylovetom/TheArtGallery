@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Artist Report
+  table
+    tr
+      td FirstName
+      td LastName
+      td Title
+      td Type
+      td Medium
+      td Style
+      td Size
+      td AskingPrice
+      td SellingPrice
+      td DateSold
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td= data[i].FirstName
+        td= data[i].LastName
+        td= data[i].Title
+        td= data[i].Type
+        td= data[i].Medium
+        td= data[i].Style
+        td= data[i].Size
+        td= data[i].AskingPrice
+        td= data[i].SellingPrice
+        td= data[i].DateSold

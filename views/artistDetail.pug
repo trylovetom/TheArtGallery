@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  h1= 'Artist Detail - ' + data.ArtistId
+  input(type="hidden", value=data.ArtistId, id="ArtistId")
+  div
+    lable FirstName: 
+    input(type="text", value=data.FirstName, id="FirstName")
+  div
+    lable LastName: 
+    input(type="text", value=data.LastName, id="LastName")
+  div
+    lable Phone: 
+    input(type="text", value=data.Phone, id="Phone")
+  div
+    lable Address: 
+    input(type="text", value=data.Address, id="Address")
+  div
+    lable SocialSecurityNumber: 
+    input(type="text", value=data.SocialSecurityNumber, id="SocialSecurityNumber")
+  div
+    lable UsualStyle: 
+    input(type="text", value=data.UsualStyle, id="UsualStyle")
+  div
+    lable UsualType: 
+    input(type="text", value=data.UsualType, id="UsualType")
+  div
+    lable UsualMedium: 
+    input(type="text", value=data.UsualMedium, id="UsualMedium")
+  div
+    lable SalesLastYear: 
+    input(type="text", value=data.SalesLastYear, id="SalesLastYear")
+  div
+    lable SalesYearToDate: 
+    input(type="text", value=data.SalesYearToDate, id="SalesYearToDate")
+    input(type='submit', id='target')
+  script.
+    $(function() {
+      $('#target').click(function() {
+        $.ajax({
+          url: "/artist/" + $("#ArtistId").val(),
+          type: 'put',
+          data: {
+            FirstName: $("#FirstName").val(),
+            LastName: $("#LastName").val(),
+            Phone: $("#Phone").val(),
+            Address: $("#Address").val(),
+            SocialSecurityNumber: $("SocialSecurityNumber").val(),
+            UsualStyle: $("#UsualStyle").val(),
+            UsualType: $("#UsualType").val(),
+            UsualMedium: $("#UsualMedium").val(),
+            SalesLastYear: $("#SalesLastYear").val(),
+            SalesYearToDate: $("#SalesYearToDate").val()
+          },
+          error: function(error) {
+            alert("Update fail");
+          },
+          success: function(result) {
+            alert("Update Success");
+          }
+        });
+      });
+    });
