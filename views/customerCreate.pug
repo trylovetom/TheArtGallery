@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Create Customer
+  form(action="/customer" method="post")
+    div
+      lable FirstName: 
+      input(type="text", name="FirstName")
+    div
+      lable LastName: 
+      input(type="text", name="LastName")
+    div
+      lable Phone: 
+      input(type="text", name="Phone")
+    div
+      lable Address: 
+      input(type="text", name="Address")
+    div
+      lable AmountBoughtLastYear: 
+      input(type="text", name="AmountBoughtLastYear")
+    div
+      lable AmountBoughtYearToDate: 
+      input(type="text", name="AmountBoughtYearToDate")
+      input(type='submit')

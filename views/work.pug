@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 Work
+  h2
+    a(href='/work/create') Create
+  table
+    tr
+      td WorkId
+      td Title
+      td Style
+      td Size
+      td Type
+      td AskingPrice
+      td Medium
+      td DateOfShow
+      td ArtistId
+      td ArtistFirstName
+      td ArtistLastName
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td
+          a(href='/work/' + data[i].WorkId)= data[i].WorkId
+        td= data[i].Title
+        td= data[i].Style
+        td= data[i].Size
+        td= data[i].Type
+        td= data[i].AskingPrice
+        td= data[i].Medium
+        td= data[i].DateOfShow
+        td= data[i].ArtistId
+        td= data[i].FirstName
+        td= data[i].LastName

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 Artist
+  h2
+    a(href='/artist/create') Create
+  table
+    tr
+      td ArtistId
+      td FirstName
+      td LastName
+      td Phone
+      td Address
+      td SocialSecurityNumber
+      td UsualStyle
+      td UsualType
+      td UsualMedium
+      td SalesLastYear
+      td SalesYearToDate
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td
+          a(href='/artist/' + data[i].ArtistId)= data[i].ArtistId
+        td= data[i].FirstName
+        td= data[i].LastName
+        td= data[i].Phone
+        td= data[i].Address
+        td= data[i].SocialSecurityNumber
+        td= data[i].UsualStyle
+        td= data[i].UsualType
+        td= data[i].UsualMedium
+        td= data[i].SalesLastYear
+        td= data[i].SalesYearToDate

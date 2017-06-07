@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 Payment
+  table
+    tr
+      td CustomerFirstName
+      td CustomerLastName
+      td ArtistFirstName
+      td ArtistLastNam
+      td Title
+      td Type
+      td Medium
+      td Style
+      td Size
+      td Salesperson
+      td SellingPrice
+      td AmountRemitted
+    - for(var i = 0; i < data.length; i++)
+      tr
+        td= data[i].CustomerFirstName
+        td= data[i].CustomerLastName
+        td= data[i].ArtistFirstName
+        td= data[i].ArtistLastName
+        td= data[i].Title
+        td= data[i].Type
+        td= data[i].Medium
+        td= data[i].Style
+        td= data[i].Size
+        td= data[i].Salesperson
+        td= data[i].SellingPrice
+        td= data[i].AmountRemitted

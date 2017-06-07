@@ -3,5 +3,11 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
   body
+    a(href="/artist", style="padding-left: 10px; padding-right: 10px;") Artist
+    a(href="/work", style="padding-left: 10px; padding-right: 10px;") Work
+    a(href="customer", style="padding-left: 10px; padding-right: 10px;") Customer
+    a(href="/sale", style="padding-left: 10px; padding-right: 10px;") Sale
+    a(href="/payment", style="padding-left: 10px; padding-right: 10px;") Payment
     block content

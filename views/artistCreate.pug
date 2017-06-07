@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Create Artist
+  form(action="/artist" method="post")
+    div
+      lable FirstName: 
+      input(type="text", name="FirstName")
+    div
+      lable LastName: 
+      input(type="text", name="LastName")
+    div
+      lable Phone: 
+      input(type="text", name="Phone")
+    div
+      lable Address: 
+      input(type="text", name="Address")
+    div
+      lable SocialSecurityNumber: 
+      input(type="text", name="SocialSecurityNumber")
+    div
+      lable UsualStyle: 
+      input(type="text", name="UsualStyle")
+    div
+      lable UsualType: 
+      input(type="text", name="UsualType")
+    div
+      lable UsualMedium: 
+      input(type="text", name="UsualMedium")
+    div
+      lable SalesLastYear: 
+      input(type="text", name="SalesLastYear")
+    div
+      lable SalesYearToDate: 
+      input(type="text", name="SalesYearToDate")
+      input(type='submit')

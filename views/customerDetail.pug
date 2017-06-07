@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  h1= 'Customer Detail - ' + data.CustomerId
+  input(type="hidden", value=data.CustomerId, id="CustomerId")
+  div
+    lable FirstName: 
+    input(type="text", value=data.FirstName, id="FirstName")
+  div
+    lable LastName: 
+    input(type="text", value=data.LastName, id="LastName")
+  div
+    lable Phone: 
+    input(type="text", value=data.Phone, id="Phone")
+  div
+    lable Address: 
+    input(type="text", value=data.Address, id="Address")
+  div
+    lable AmountBoughtLastYear: 
+    input(type="text", value=data.AmountBoughtLastYear, id="AmountBoughtLastYear")
+  div
+    lable AmountBoughtYearToDate: 
+    input(type="text", value=data.AmountBoughtYearToDate, id="AmountBoughtYearToDate")
+    input(type='submit', id='target')
+  div
+    lable(style="background-color: red;") Delete
+    input(type='submit', id='delete')
+  script.
+    $(function() {
+      $('#target').click(function() {
+        $.ajax({
+          url: "/customer/" + $("#CustomerId").val(),
+          type: 'put',
+          data: {
+            FirstName: $("#FirstName").val(),
+            LastName: $("#LastName").val(),
+            Phone: $("#Phone").val(),
+            Address: $("#Address").val(),
+            AmountBoughtLastYear: $("#AmountBoughtLastYear").val(),
+            AmountBoughtYearToDate: $("#AmountBoughtYearToDate").val()
+          },
+          error: function(error) {
+            alert("Update fail");
+          },
+          success: function(result) {
+            alert("Update Success");
+          }
+        });
+      });
+
+      $('#delete').click(function() {
+        $.ajax({
+          url: "/customer/" + $("#CustomerId").val(),
+          type: 'delete',
+          error: function(error) {
+            alert("Delete fail");
+          },
+          success: function(result) {
+            alert("Delete Success");
+            window.location.href = '/customer';
+          }
+        });
+      });
+    });
