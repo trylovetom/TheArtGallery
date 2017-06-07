@@ -6,7 +6,7 @@ NTUST ET6401701 Data Base Design 陳郁堂 Yie-Tarng Chen
 2. Continuous Integration
 3. Build Pipelines
 4. Continuous Deployment(AWS Auto Deploy Script)
-5. Follow The Github Flow: https://github.com/trylovetom/TheArtGallery
+5. Follow The Github Flow: https://github.com/trylovetom/TheArtGallery: http://env-development.mkihqp7kgc.us-west-2.elasticbeanstalk.com
 
 ## ER Diagram
 ![](https://i.imgur.com/xIr2rYv.png)

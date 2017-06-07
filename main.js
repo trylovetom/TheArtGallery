@@ -5,14 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var app = express();
-var config = require('./config.js')
+// var config = require('./config.js')
 var mysql = require('mysql');
+// var connection = mysql.createConnection({
+//   host : config.mysql.host,
+//   user : config.mysql.user,
+//   password : config.mysql.password,
+//   database : config.mysql.database
+// });
 var connection = mysql.createConnection({
-  host : config.mysql.host,
-  user : config.mysql.user,
-  password : config.mysql.password,
-  database : config.mysql.database
+  host : process.env.HOST,
+  user : process.env.USER,
+  password : process.env.Password,
+  database : process.env.Database
 });
+process.env.PORT
 
 connection.connect();
 app.use(function(req, res, next) {
