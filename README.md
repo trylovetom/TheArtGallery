@@ -192,3 +192,11 @@ CREATE TABLE SALE (
     - `GET /sale/:id` get the sale by id, without id you can get the all list
     - `UPDATE sale/:id` update the sale by id
     - `DELETE sale/:id` delete the sale by id
+
+## 自評表
+1. Basic Database CRUD
+2. AWS Auto Deploy Script
+3. Continuous Integration
+4. Build Pipelines
+5. Continuous Deployment
+6. Follow The Github Flow
