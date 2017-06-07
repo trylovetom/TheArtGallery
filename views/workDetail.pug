@@ -34,6 +34,9 @@ block content
     lable ArtistLastName: 
     input(type="text", value=data.LastName, id="LastName", disabled="disabled")
     input(type='submit', id='target')
+  div
+    lable(style="background-color: red;") Delete
+    input(type='submit', id='delete')
   script.
     $(function() {
       $('#target').click(function() {
@@ -55,6 +58,20 @@ block content
           },
           success: function(result) {
             alert("Update Success");
+          }
+        });
+      });
+
+      $('#delete').click(function() {
+        $.ajax({
+          url: "/work/" + $("#WorkId").val(),
+          type: 'delete',
+          error: function(error) {
+            alert("Delete fail");
+          },
+          success: function(result) {
+            alert("Delete Success");
+            window.location.href = '/work';
           }
         });
       });

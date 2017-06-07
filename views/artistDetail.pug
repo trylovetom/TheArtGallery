@@ -33,10 +33,13 @@ block content
   div
     lable SalesYearToDate: 
     input(type="text", value=data.SalesYearToDate, id="SalesYearToDate")
-    input(type='submit', id='target')
+    input(type='submit', id='update')
+  div
+    lable(style="background-color: red;") Delete
+    input(type='submit', id='delete')
   script.
     $(function() {
-      $('#target').click(function() {
+      $('#update').click(function() {
         $.ajax({
           url: "/artist/" + $("#ArtistId").val(),
           type: 'put',
@@ -57,6 +60,20 @@ block content
           },
           success: function(result) {
             alert("Update Success");
+          }
+        });
+      });
+
+      $('#delete').click(function() {
+        $.ajax({
+          url: "/artist/" + $("#ArtistId").val(),
+          type: 'delete',
+          error: function(error) {
+            alert("Delete fail");
+          },
+          success: function(result) {
+            alert("Delete Success");
+            window.location.href = '/artist';
           }
         });
       });

@@ -22,6 +22,9 @@ block content
     lable AmountBoughtYearToDate: 
     input(type="text", value=data.AmountBoughtYearToDate, id="AmountBoughtYearToDate")
     input(type='submit', id='target')
+  div
+    lable(style="background-color: red;") Delete
+    input(type='submit', id='delete')
   script.
     $(function() {
       $('#target').click(function() {
@@ -41,6 +44,20 @@ block content
           },
           success: function(result) {
             alert("Update Success");
+          }
+        });
+      });
+
+      $('#delete').click(function() {
+        $.ajax({
+          url: "/customer/" + $("#CustomerId").val(),
+          type: 'delete',
+          error: function(error) {
+            alert("Delete fail");
+          },
+          success: function(result) {
+            alert("Delete Success");
+            window.location.href = '/customer';
           }
         });
       });
